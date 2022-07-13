@@ -7,7 +7,7 @@
     "@types/node": "^14.0.13",
     "d20": "^1.4.1",
     "discord-command-parser": "^1.4.3",
-    "discord.js": "^12.2.0",
+    "discord.js": "^13.8.1",
     "dotenv": "^8.2.0",
     "node-fetch": "^3.2.8",
     "ramda": "^0.27.0",
