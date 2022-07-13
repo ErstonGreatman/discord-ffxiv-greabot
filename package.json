@@ -8,7 +8,7 @@
     "d20": "^1.4.1",
     "discord-command-parser": "^1.4.3",
     "discord.js": "^13.8.1",
-    "dotenv": "^8.2.0",
+    "dotenv": "^16.0.1",
     "node-fetch": "^3.2.8",
     "ramda": "^0.27.0",
     "snoowrap": "^1.21.0",
