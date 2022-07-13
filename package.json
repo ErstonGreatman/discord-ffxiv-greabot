@@ -11,7 +11,7 @@
     "dotenv": "^16.0.1",
     "node-fetch": "^3.2.8",
     "ramda": "^0.28.0",
-    "snoowrap": "^1.21.0",
+    "snoowrap": "^1.23.0",
     "typescript": "^3.9.5",
     "winston": "^3.8.1"
   },
