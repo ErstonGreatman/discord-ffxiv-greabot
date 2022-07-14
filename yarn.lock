@@ -477,10 +477,10 @@ discord-api-types@^0.33.3:
   resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.33.5.tgz#6548b70520f7b944c60984dca4ab58654d664a12"
   integrity sha512-dvO5M52v7m7Dy96+XUnzXNsQ/0npsYpU6dL205kAtEDueswoz3aU3bh1UMoK4cQmcGtB1YRyLKqp+DXi05lzFg==
 
-discord-command-parser@^1.4.3:
-  version "1.4.3"
-  resolved "https://registry.yarnpkg.com/discord-command-parser/-/discord-command-parser-1.4.3.tgz#59e7b2f6d33ac555c7903cbb70e65dbcb2c815f3"
-  integrity sha512-uZpOep7CrLkFZ2iNdZtMoKzKxRMSx/ndoWG7x8PdfxDSYy7Jz0wrUgILbcLOFsUVhqAfE9c4/exeb7eKenK3fw==
+discord-command-parser@^1.5.3:
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/discord-command-parser/-/discord-command-parser-1.5.3.tgz#ba27097aa0976fa9287ea81f8d8cdd82f2887317"
+  integrity sha512-YWgalkrbly0dJCyLw7p9SX3RC7HIxOrSTz/8vKjlmYPyyZmMCGmKwpXu6HkPXRZ20L6QqftVWigSw6fDK2zemg==
 
 discord.js@^13.8.1:
   version "13.8.1"

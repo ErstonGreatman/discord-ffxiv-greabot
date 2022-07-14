@@ -6,7 +6,7 @@
   "dependencies": {
     "@types/node": "^18.0.3",
     "d20": "^1.4.1",
-    "discord-command-parser": "^1.4.3",
+    "discord-command-parser": "^1.5.3",
     "discord.js": "^13.8.1",
     "dotenv": "^16.0.1",
     "node-fetch": "^3.2.8",
