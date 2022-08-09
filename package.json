@@ -16,7 +16,7 @@
     "winston": "^3.8.1"
   },
   "devDependencies": {
-    "@types/chai": "^4.3.1",
+    "@types/chai": "^4.3.3",
     "@types/mocha": "^9.1.1",
     "@types/ramda": "^0.28.15",
     "chai": "^4.3.6",
