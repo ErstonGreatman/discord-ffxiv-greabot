@@ -1,74 +1,36 @@
-import { Plugin } from './Plugin';
-import {
-  Client,
-  Message,
-} from 'discord.js';
-import * as R from 'ramda';
-import * as commandParser from 'discord-command-parser';
-import { MODULE_TYPES } from './PluginDescription';
-import winston = require('winston');
-import { CommandPlugin } from './CommandPlugin';
-import {
-  FailedParsedMessage,
-} from 'discord-command-parser';
+import { Collection, REST, Routes } from 'discord.js';
+import { Logger } from 'winston';
+import { DiscordCommand } from '../lib/types/DiscordCommand';
+import plugins from './plugins';
 
-/**
- * PluginManager
- * Used to handle plugins for Greatbot. Manages a master command list
- */
 
-export class PluginManager {
-  private plugins: Array<Plugin | CommandPlugin> = [];
+export const loadPlugins = (logger: Logger) => {
+  const commandMap = plugins.reduce((commands: Iterable<[string, DiscordCommand]>, plugin) => 
+    [...commands, ...plugin.commands.map(command => [command.data.name, command])] as Iterable<[string, DiscordCommand]>,
+    [],
+  );
 
-  public registerPlugin = (plugin: Plugin | CommandPlugin): boolean => {
-    // If plugin is already registered, don't add it again
-    if (R.contains(plugin, this.plugins)) {
-      winston.error(`Error registering plugin: '${plugin.name}' is already registered.`);
-      return false;
+  const commands = new Collection(commandMap);
+
+  const commsToRegister = commands.map(command => command.data.toJSON());
+  const rest = new REST().setToken(process.env.DISCORD_TOKEN ?? '');
+
+  (async () => {
+    try {
+      logger.log('info', `Registering ${commands.size} /slash command(s)`);
+
+      const data = await rest.put(
+        Routes.applicationGuildCommands(process.env.DISCORD_CLIENT_ID ?? '', process.env.DISCORD_GUILD_ID ?? ''),
+        { body: commsToRegister },
+      );
+
+      logger.log('info', `Successfully reloaded ${(data as []).length} /slash command(s)`);
+    } catch (error) {
+      logger.log('error', error);
     }
+  })();
 
-    this.plugins = R.append(plugin, this.plugins);
-    return true;
-  };
-
-  public unregisterPlugin = (plugin: Plugin | CommandPlugin): boolean => {
-    // If plugin is already registered, don't add it again
-    if (!R.contains(plugin, this.plugins)) {
-      winston.error(`Error unregistering plugin: '${plugin.name}' is not registered.`);
-      return false;
-    }
-
-    this.plugins = R.remove(R.findIndex(R.equals(plugin), this.plugins), 1, this.plugins);
-    return true;
-  };
-
-  public handleMessage = (client: Client, message: Message): void => {
-    // We don't respond to bots!
-    if (message.author.bot) {
-      return;
-    }
-
-    // Parse input for commands
-    const parsedMessage = commandParser.parse(message, '!', { allowBots: false });
-
-    // For debugging:
-    if (!parsedMessage.success) {
-      console.log('Command not parsed: ' + (parsedMessage as FailedParsedMessage<any>).error);
-    } else {
-      console.log('Parse succeeded: ' + parsedMessage.command + ' args: ' + parsedMessage.arguments);
-    }
-
-    // Iterate through each plugin and handle messages
-    R.forEach((plugin) => {
-      if (plugin.type === MODULE_TYPES.COMMAND) {
-        if (!parsedMessage.success) {
-          return;
-        }
-
-        (plugin as CommandPlugin).handleMessage(client, parsedMessage);
-      } else {
-        (plugin as Plugin).handleMessage(client, message);
-      }
-    }, this.plugins);
-  };
+  return commands;
 };
+
+export default loadPlugins;

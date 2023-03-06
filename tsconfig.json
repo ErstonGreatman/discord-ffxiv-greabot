@@ -1,26 +1,18 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "CommonJS",
     "moduleResolution": "node",
-    "target": "es2016",
-    "lib": [
-      "es6",
-      "dom"
-    ],
-    "sourceMap": true,
-    "types": [
-      // add node as an option
-      "node"
-    ],
+    "target": "ES6",
+    "rootDir": "./src",
+    "outDir": "./prod",
     "typeRoots": [
       // add path to @types
       "node_modules/@types"
     ],
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true
-  },
-  "exclude": [
-    "node_modules"
-  ]
+  }
 }
