@@ -15,7 +15,7 @@ import DiscordClient from './lib/types/DiscordClient';
 
   haurchebot.on('ready', () => {
     logger.log('info', 'Haurchebot connected!');
-    haurchebot.commands = loadPlugins(logger);
+    haurchebot.commands = loadPlugins();
   });
 
   haurchebot.on('interactionCreate', onInteraction);

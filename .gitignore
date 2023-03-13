@@ -7,3 +7,5 @@ node_modules/
 
 # prod folder
 prod/
+combined.log
+error.log

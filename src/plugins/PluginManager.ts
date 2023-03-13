@@ -1,10 +1,10 @@
 import { Collection, REST, Routes } from 'discord.js';
-import { Logger } from 'winston';
+import logger from '../lib/logger';
 import { DiscordCommand } from '../lib/types/DiscordCommand';
 import plugins from './plugins';
 
 
-export const loadPlugins = (logger: Logger) => {
+export const loadPlugins = () => {
   const commandMap = plugins.reduce((commands: Iterable<[string, DiscordCommand]>, plugin) => 
     [...commands, ...plugin.commands.map(command => [command.data.name, command])] as Iterable<[string, DiscordCommand]>,
     [],
