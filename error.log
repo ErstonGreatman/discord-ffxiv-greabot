@@ -1,0 +1,6 @@
+{"code":50035,"level":"error","method":"PUT","rawError":{"code":50035,"errors":{"0":{"name":{"_errors":[{"code":"BASE_TYPE_REQUIRED","message":"This field is required"}]}}},"message":"Invalid Form Body"},"requestBody":{"json":[{"data":{"description":"Rolls dice for you!","name":"roll","options":[{"description":"The dice formula to roll.","name":"formula","required":true,"type":3}]}}]},"status":400,"url":"https://discord.com/api/v10/applications/729255169627258911/guilds/203610625383989250/commands"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
