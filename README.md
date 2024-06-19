@@ -3,6 +3,7 @@
 ### haurchebot-ffxiv-discord
 
 ## Note: Updated for `slash commands` but not all features are supported yet.
+## Note (6/18/2024) - I haven't touched this in ages. It was mostly a test and examine how to build Discord bot integration and I think it has served its initial purpose and there are many great FFXIV bots out there. It might better serve to retool this to support the FFXIV TTRPG or something similar which I may do in the future, but feel free to fork this and use it as you please! I originally hosted this on Heroku, though when implmenting the slash commands, I was testing and deploying to sparkedhost.com for like $11 annually.
 
 ### What is this?
 HaurcheBot is a bot for Discord to support FFXIV roleplayers. It currently has basic data-fetching features but is planned to include support for RP resources such as linking Lodestone profiles, carrd.co/RefSheet integration and more.
